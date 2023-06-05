@@ -15,10 +15,18 @@ export const MultipleCustomHooks = () => {
     <>
       <h1>Breaking Bad Quotes</h1>
       <hr />
-      <button onClick={() => increment()} className="btn btn-primary">
+      <button
+        disabled={isLoading}
+        onClick={() => increment()}
+        className="btn btn-primary"
+      >
         More Quotes
       </button>
-      <button onClick={() => decrement()} className="btn btn-secondary">
+      <button
+        disabled={isLoading}
+        onClick={() => decrement()}
+        className="btn btn-secondary"
+      >
         Less Quotes
       </button>
       {isLoading ? (
