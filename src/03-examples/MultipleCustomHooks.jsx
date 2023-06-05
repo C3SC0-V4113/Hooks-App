@@ -1,10 +1,10 @@
-import { useCounter } from "../hooks/useCounter";
-import { useFetch } from "../hooks/useFetch";
+import { useCounter, useFetch } from "../hooks";
+import { LoadingQuote, QuoteList } from "./";
 
 export const MultipleCustomHooks = () => {
   const { counter, increment, decrement } = useCounter(1);
 
-  const { data, hasError, isLoading } = useFetch(
+  const { data, isLoading } = useFetch(
     `https://api.breakingbadquotes.xyz/v1/quotes/${counter}`
   );
   //   console.log({ data, hasError, isLoading });
@@ -23,22 +23,13 @@ export const MultipleCustomHooks = () => {
         More Quotes
       </button>
       <button
-        disabled={isLoading}
+        disabled={isLoading || counter == 0}
         onClick={() => decrement()}
         className="btn btn-secondary"
       >
         Less Quotes
       </button>
-      {isLoading ? (
-        <div className="alert alert-info text-center">Loading...</div>
-      ) : (
-        data.map((quote, i) => (
-          <blockquote key={i} className="blockquote text-end">
-            <p className="mb-4">{quote.quote}</p>
-            <footer className="blockquote-footer">{quote.author}</footer>
-          </blockquote>
-        ))
-      )}
+      {isLoading ? <LoadingQuote /> : <QuoteList data={data} />}
     </>
   );
 };
