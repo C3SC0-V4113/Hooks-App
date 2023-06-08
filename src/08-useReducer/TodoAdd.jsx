@@ -1,4 +1,5 @@
 import { useForm } from "../hooks/useForm";
+import propTypes from "prop-types";
 
 export const TodoAdd = ({ onNewTodo }) => {
   const { description, onInputChange, onResetForm } = useForm({
@@ -34,4 +35,8 @@ export const TodoAdd = ({ onNewTodo }) => {
       </button>
     </form>
   );
+};
+
+TodoAdd.propTypes = {
+  onNewTodo: propTypes.func.isRequired,
 };

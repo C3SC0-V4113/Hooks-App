@@ -1,3 +1,5 @@
+import propTypes from "prop-types";
+
 export const TodoItem = ({ todo }) => {
   return (
     <li className="list-group-item d-flex justify-content-between">
@@ -5,4 +7,8 @@ export const TodoItem = ({ todo }) => {
       <button className="btn btn-danger">Borrar</button>
     </li>
   );
+};
+
+TodoItem.propTypes = {
+  todo: propTypes.object.isRequired,
 };
