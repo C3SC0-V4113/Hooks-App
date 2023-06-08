@@ -1,29 +1,33 @@
-import { useState } from "react";
+import { useForm } from "../hooks/useForm";
 
 export const TodoAdd = ({ onNewTodo }) => {
-  const [inputValue, setInputValue] = useState("");
+  const { description, onInputChange, onResetForm } = useForm({
+    description: "",
+  });
 
-  const onInputChange = (event) => {
-    setInputValue(event.target.value);
+  const onFormSubmit = (event) => {
+    event.preventDefault();
+    if (description.length <= 1) return;
+
+    const newTodo = {
+      id: new Date().getTime(),
+      description,
+      done: false,
+    };
+
+    onNewTodo(newTodo);
+    onResetForm();
   };
 
   return (
-    <form
-      onSubmit={() =>
-        onNewTodo({
-          id: new Date().getTime(),
-          description: inputValue,
-          done: false,
-        })
-      }
-      aria-label="form"
-    >
+    <form onSubmit={onFormSubmit} aria-label="form">
       <input
         type="text"
         placeholder="¿Que hay que hacer?"
         className="form-control"
-        value={inputValue}
+        value={description}
         onChange={onInputChange}
+        name="description"
       />
       <button type="submit" className="btn btn-primary mt-4">
         Agregar
