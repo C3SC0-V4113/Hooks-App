@@ -1,5 +1,5 @@
-import { useForm } from "../hooks/useForm";
 import propTypes from "prop-types";
+import { useForm } from "../hooks";
 
 export const TodoAdd = ({ onNewTodo }) => {
   const { description, onInputChange, onResetForm } = useForm({

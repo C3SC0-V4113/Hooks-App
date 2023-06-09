@@ -1,5 +1,5 @@
 import propTypes from "prop-types";
-import { TodoItem } from "./TodoItem";
+import { TodoItem } from "./";
 
 export const TodoList = ({ todos = [], onDeleteTodo, onToggleTodo }) => {
   return (
