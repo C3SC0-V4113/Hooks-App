@@ -37,10 +37,20 @@ export const useTodo = (initialState = []) => {
     dispatch(action);
   };
 
+  const todosCount = () => {
+    return todos.length;
+  };
+
+  const pendingTodosCount = () => {
+    return todos.filter((todo) => !todo.done).length;
+  };
+
   return {
     todos,
     handleNewTodo,
     handleDeleteTodo,
     handleToggleTodo,
+    todosCount,
+    pendingTodosCount,
   };
 };
