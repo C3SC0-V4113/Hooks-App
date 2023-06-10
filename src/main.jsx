@@ -1,5 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 // import { HooksApp } from "./HooksApp";
 // import { CounterApp } from "./01-useState/CounterApp";
@@ -19,6 +20,13 @@ import { MainApp } from "./09-useContext";
 
 import "./index.css";
 
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <MainApp />,
+  },
+]);
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     {/* <HooksApp /> */}
@@ -34,6 +42,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     {/* <CallbackHooks /> */}
     {/* <Padre /> */}
     {/* <TodoApp /> */}
-    <MainApp />
+    <RouterProvider router={router} />
   </React.StrictMode>
 );
