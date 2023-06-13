@@ -41,4 +41,15 @@ describe("Pruebas en useCounter", () => {
 
     expect(result.current.counter).toBe(97);
   });
+
+  test("debe de retornar al estado inicial", () => {
+    const { result } = renderHook(() => useCounter(100));
+    const { increment, reset } = result.current;
+    act(() => {
+      increment(2);
+      reset();
+    });
+
+    expect(result.current.counter).toBe(100);
+  });
 });
