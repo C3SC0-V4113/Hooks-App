@@ -26,9 +26,9 @@ describe("pruebas en <LoginPage/>", () => {
     fireEvent.click(button);
 
     expect(setUserMock).toHaveBeenCalledWith({
-      email: "fran@gmail.com",
       id: 123,
       name: "Francisco Valle",
+      email: "fran@gmail.com",
     });
   });
 });
